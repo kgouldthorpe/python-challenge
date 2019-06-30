@@ -1,6 +1,7 @@
 #Get CSV
 import csv
 import os
+import numpy as np
 pybank_csv = os.path.join('Resources', 'budget_data.csv')
 
 #Read CSV
@@ -18,6 +19,14 @@ with open(pybank_csv, 'r') as csvfile:
   header = next(csvreader)
   net_total = 0
 
-#Calculate net total of Profit/Loss
-  net_total = sum((int([row[1] for row in csvreader]))
-  print(net_total)
+#Convert row 1 to np 
+  for row in csvreader:
+    np_row = np.array(list(row[1]))
+    
+#Calculate net total of Profit/Loss   
+    net_total = sum(np_row)
+    print(net_total)
+    
+
+
+  
