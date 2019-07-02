@@ -5,15 +5,18 @@ import os
 #Bring in CSV
 pybank_csv = os.path.join('Resources','budget_data.csv')
 
+#Convert to library
+budget_data = {}
 #Read CSV
 with open(pybank_csv, 'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
-    header = next(csvreader)
+  bankread = csv.reader(csvfile, delimiter=',')
+  next(bankread)
 
+  for row in bankread:
+    budget_data[row[0]] = {"Profit/Losses":row[1]}
 #Calculate number of months in the dataset
- for row in csvreader:
-    month_count = len(list(row[0]))
-    print(month_count)
+  month_count = len(budget_data)
+  print(month_count)
 
 #Calculate net total of Profit/Loss 
 #net_total = 
